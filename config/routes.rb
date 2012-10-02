@@ -1,5 +1,8 @@
 Mybrand::Application.routes.draw do
+  # get "robotviews/show"
+
   resources :snippets
+  get 'robotviews/:id/show' => 'robotviews#show', :as => :robotviews
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
