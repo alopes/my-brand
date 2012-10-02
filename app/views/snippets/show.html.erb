@@ -1,12 +1,7 @@
-<style type="text/css" media="screen">
-	<%= @snippet.css %>
-</style>
-
 <%- model_class = @snippet.class -%>
 <div class="page-header">
   <h1><%=t '.title', :default => @snippet.name %></h1>
 </div>
-
 
 <div class="row">
 	<div class="span3">
@@ -24,17 +19,17 @@
 		<div class="tab-content">
 			<!-- HOME -->
 		  <div class="tab-pane active" id="home">
+				
+				
+				
+				<iframe id="robotview" width="100%" frameborder=0 src="<%= robotviews_url(@snippet) %>"></iframe>
 
-				<div id="stage">
-					<%= @snippet.html.html_safe %>
-					
-				</div>
 
 		  </div>
 
 			<!-- HTML -->
 		  <div class="tab-pane" id="html">
-				<%= CodeRay.scan(@snippet.html, :ruby).div.html_safe %>
+				<%= CodeRay.scan(@snippet.html, :html).div.html_safe %>
 		  </div>
 
 			<!-- CSS -->
@@ -66,3 +61,10 @@
               :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
               :class => 'btn btn-danger' %>
 </div>
+
+<script>
+function alertsize(pixels){
+    pixels+=32;
+    document.getElementById('robotview').style.height=pixels+"px";
+}
+</script>

@@ -57,7 +57,17 @@ class SnippetsController < ApplicationController
   # PUT /snippets/1.json
   def update
     @snippet = Snippet.find(params[:id])
-
+    # 
+    # @snippet = @snippet.styles.build()
+    # 
+    # @snippet.save!
+    # 
+    # abort(@snippet.styles.inspect)
+    
+    
+    
+    # abort(@snippet.inspect)
+    
     respond_to do |format|
       if @snippet.update_attributes(params[:snippet])
         format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
@@ -79,5 +89,13 @@ class SnippetsController < ApplicationController
       format.html { redirect_to snippets_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def create_new_revision
+    # create new style record
+    
+    #attach it to the same snippet
   end
 end
