@@ -4,6 +4,8 @@ Mybrand::Application.routes.draw do
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   resources :snippets
   get 'robotviews/:id/show' => 'robotviews#show', :as => :robotviews
+  
+  root :to => 'snippets#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
