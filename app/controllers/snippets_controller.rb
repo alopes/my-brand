@@ -70,7 +70,11 @@ class SnippetsController < ApplicationController
     
     respond_to do |format|
       if @snippet.update_attributes(params[:snippet])
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
+        
+        undo_link = view_context.link_to("undo", revert_version_path(@snippet.versions.last), :method => :post)
+        # redirect_to @snippet, :notice => "Successfully updated product."
+            
+        format.html { redirect_to @snippet, notice: "Snippet was successfully updated. #{undo_link}" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

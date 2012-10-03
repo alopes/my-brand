@@ -6,6 +6,15 @@
 <div class="row">
 	<div class="span3">
 		<p><%= @snippet.description %></p>
+		
+		<p>Versions: <%= @snippet.versions.count %></p>
+		
+		<ul>
+		<% @snippet.versions.each do |version| %>
+		<% undo_link = link_to("undo", revert_version_path(version), :method => :post) %>
+		<li> v <%= version.created_at %> <%= undo_link %></li>
+		<% end %>
+		</ul>
 	</div>
 	
 	<div class="span9">
